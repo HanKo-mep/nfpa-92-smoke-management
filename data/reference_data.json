@@ -1,0 +1,264 @@
+{
+  "standard": {
+    "name": "NFPA 92 / NFPA 92B (historical)",
+    "title": "Standard for Smoke Control Systems / Guide for Smoke Management Systems in Malls, Atria, and Large Areas",
+    "note": "NFPA 92B was withdrawn in 2011 and incorporated into NFPA 92. Calculations follow the algebraic methods retained in NFPA 92 Chapter 5 (SI units).",
+    "edition_note": "Formulas and guidance based on NFPA 92B-2009 and equivalent SI forms in later NFPA 92 editions."
+  },
+  "design_fires": {
+    "typical_steady_kW": {
+      "retail_display": 2500,
+      "office_workstation": 1000,
+      "upholstered_furniture": 1500,
+      "vehicle_car": 5000,
+      "merchandise_high": 5000,
+      "sprinklered_retail": 2000,
+      "unsprinklered_retail": 5000
+    },
+    "t_squared_alpha_kW_s2": {
+      "slow": 0.00293,
+      "medium": 0.0117,
+      "fast": 0.0469,
+      "ultra_fast": 0.188
+    },
+    "convective_fraction_default": 0.7,
+    "radiative_fraction_default": 0.3
+  },
+  "smoke_layer": {
+    "min_clear_height_m": 1.83,
+    "min_layer_depth_fraction_of_H": 0.2,
+    "tenability_temp_C": 60,
+    "tenability_visibility_m": 10,
+    "ambient_temp_C_default": 20,
+    "ambient_density_kg_m3": 1.2,
+    "cp_kJ_kgK": 1.0
+  },
+  "plume_equations_SI": {
+    "axisymmetric_above_flame": "m_dot = 0.071 * Qc**(1/3) * z**(5/3) + 0.0018 * Qc",
+    "axisymmetric_in_flame": "m_dot = 0.032 * Qc**(3/5) * z**(1/5)",
+    "flame_height_SI": "zl = 0.166 * Qc**(2/5)",
+    "flame_height_note": "NFPA 92 SI form of limiting elevation (approx. mean flame height). Some handbooks also use 0.235*Qc**(2/5); app uses 0.166 form.",
+    "units": "Qc in kW, z in m, m_dot in kg/s"
+  },
+  "plugholing": {
+    "gamma_default": 1.0,
+    "note": "Maximum volumetric flow per inlet without plugholing. Gamma depends on inlet location and temperature ratio."
+  },
+  "makeup_air": {
+    "fraction_of_exhaust": [
+      0.85,
+      0.95
+    ],
+    "max_velocity_m_s": 1.02,
+    "max_velocity_note": "NFPA 92 / common practice: makeup air velocity should not exceed 1.02 m/s (200 fpm) in the vicinity of the fire or openings that could disrupt the plume. Higher velocities may be acceptable remote from the fire with engineering analysis.",
+    "recommended_location": "Low level, remote from expected fire locations, distributed to avoid high-momentum jets into the plume."
+  },
+  "exhaust_inlets": {
+    "min_number_guidance": "At least two inlets recommended for reliability; distribute to avoid plugholing and short-circuiting."
+  },
+  "checklist_categories": [
+    {
+      "id": "project",
+      "title": "1. Project & Regulatory Data",
+      "items": [
+        "Project name, location, and occupancy classification",
+        "Applicable edition of NFPA 92 (or local adoption of former 92B methods)",
+        "Authority Having Jurisdiction (AHJ) requirements and amendments",
+        "Building code references (IBC, NFPA 101, local codes)",
+        "Design basis document / smoke control narrative prepared",
+        "Design objectives clearly stated (smoke layer maintenance, tenability, ASET/RSET)"
+      ]
+    },
+    {
+      "id": "geometry",
+      "title": "2. Geometry & Space Description",
+      "items": [
+        "Large-volume space dimensions (length, width, height) – SI units",
+        "Floor area and volume of the atrium / mall / large space",
+        "Highest walking surface elevation relative to fire source",
+        "Cross-sectional area variation with height (if non-uniform)",
+        "Openings to adjacent spaces and communicating areas",
+        "Location and size of potential fire sources",
+        "Ceiling configuration and any draft curtains / smoke reservoirs"
+      ]
+    },
+    {
+      "id": "design_fire",
+      "title": "3. Design Fire Scenario",
+      "items": [
+        "Design fire type selected (steady-state or t-squared growth)",
+        "Heat release rate (HRR) justified by fuel load / occupancy / test data",
+        "Convective fraction (Qc / Q) documented (typically 0.6–0.7)",
+        "Sprinkler effect considered (activation time, HRR reduction if applicable)",
+        "Fire location (centre, wall, corner, balcony spill) identified",
+        "Fuel package separation distances checked for secondary ignition"
+      ]
+    },
+    {
+      "id": "smoke_layer",
+      "title": "4. Smoke Layer Design Criteria",
+      "items": [
+        "Design smoke layer interface height (z) above highest walking surface ≥ 1.83 m",
+        "Minimum smoke layer depth ≥ 20 % of floor-to-ceiling height or justified by analysis",
+        "Clear height for means of egress maintained for required ASET",
+        "Tenability criteria defined (temperature ≤ 60 °C, visibility ≥ 10 m at 1.83 m height)",
+        "Time to reach design interface height calculated (filling or steady exhaust)"
+      ]
+    },
+    {
+      "id": "calculations",
+      "title": "5. Calculation Methods & Results",
+      "items": [
+        "Algebraic equations (NFPA 92 Chapter 5 / former 92B) or approved zone / CFD model used",
+        "Axisymmetric / balcony spill / window plume equations applied correctly",
+        "Mass flow rate of smoke production at design interface height",
+        "Volumetric exhaust rate at smoke temperature",
+        "Number and capacity of exhaust inlets checked against plugholing limit",
+        "Smoke density / optical density estimated if required for tenability",
+        "Makeup air quantity (85–95 % of exhaust) and velocity ≤ 1.02 m/s verified",
+        "Hand calculations or spreadsheet verified independently"
+      ]
+    },
+    {
+      "id": "system_components",
+      "title": "6. System Components & Equipment",
+      "items": [
+        "Smoke exhaust fans rated for required temperature-time class (e.g. 300 °C / 1 h or higher)",
+        "Fan redundancy / standby capacity (N+1 or dual fans) considered",
+        "Ductwork and dampers suitable for smoke control temperatures and pressures",
+        "Exhaust inlet locations and sizes coordinated with architecture",
+        "Makeup air openings / supply fans sized and located to avoid plume disruption",
+        "Fire / smoke dampers and control dampers listed for the application"
+      ]
+    },
+    {
+      "id": "controls",
+      "title": "7. Controls, Detection & Activation",
+      "items": [
+        "Automatic activation by smoke detection or sprinkler waterflow",
+        "Manual activation capability provided at Firefighters’ Smoke Control Station (FSCS)",
+        "Control sequence documented (exhaust start, makeup air, HVAC shutdown, dampers)",
+        "Interlocks with fire alarm system and elevators / stair pressurization if present",
+        "Status indication and override at FSCS",
+        "Power supply reliability (emergency power for smoke control equipment)"
+      ]
+    },
+    {
+      "id": "testing",
+      "title": "8. Testing, Commissioning & Documentation",
+      "items": [
+        "Acceptance testing plan prepared per NFPA 92 Chapter 8",
+        "Component testing (fans, dampers, controls) completed",
+        "System-level performance testing (pressure, airflow, smoke layer if practical)",
+        "Documentation package complete (design calculations, drawings, sequences, test reports)",
+        "Periodic inspection, testing and maintenance schedule defined",
+        "Owner training and O&M manuals provided"
+      ]
+    },
+    {
+      "id": "special",
+      "title": "9. Special Conditions & Coordination",
+      "items": [
+        "Interaction with stairwell / elevator pressurization systems evaluated",
+        "Opposed airflow method applied where communicating spaces require it",
+        "Natural venting (if used) supported by analysis or scale modelling",
+        "Stratification risk assessed (high ceilings, low HRR)",
+        "Wind effects and outdoor design temperatures considered for makeup air",
+        "Coordination with architectural features (glass, openings, balconies)"
+      ]
+    },
+    {
+      "id": "testing_acceptance",
+      "title": "10. Acceptance Testing & Commissioning",
+      "items": [
+        "Design documents include acceptance testing procedures and pass/fail criteria",
+        "Preliminary building inspection completed (construction status, openings, barriers)",
+        "Component testing completed for fans, dampers, detectors, controls, doors",
+        "Individual component capacities and functions verified",
+        "Complete smoke-control sequence demonstrated (normal → automatic smoke mode → standby power if provided → return to normal)",
+        "Airflow quantities measured at exhaust and makeup-air locations",
+        "Pressure differences measured across smoke barriers / openings as applicable",
+        "Door-opening forces verified where pressurization is used",
+        "Activation from automatic detection and manual means confirmed",
+        "Firefighter’s Smoke Control Station (FSCS) override and status indication verified",
+        "Testing performed under both normal and emergency/standby power (if provided)",
+        "Special inspector (where required by IBC/local code) present and report prepared",
+        "Final acceptance test report filed with AHJ and copy retained in building"
+      ]
+    },
+    {
+      "id": "testing_periodic",
+      "title": "11. Periodic ITM & Documentation",
+      "items": [
+        "Dedicated smoke control systems tested at least semiannually",
+        "Non-dedicated systems tested at least annually",
+        "Airflow quantities measured at exhaust equipment and makeup-air supplies",
+        "Pressure differences measured at smoke barrier openings",
+        "Full control sequence operated for each design scenario",
+        "Results documented in O&M log and available for inspection",
+        "Equipment maintained per manufacturer recommendations",
+        "Any modifications re-tested and documentation updated",
+        "Detailed Design Report prepared (purpose, objectives, approach, assumptions, calculations, equipment specs, activation method, operation logic, commissioning procedures)",
+        "Operations & Maintenance Manual provided to owner (commissioning results, ITM frequencies, critical design assumptions, system purpose)",
+        "As-built drawings and control sequences current",
+        "Acceptance test report retained on site"
+      ]
+    }
+  ],
+  "tenability": {
+    "temperature_C": 60,
+    "visibility_m": 10,
+    "CO_ppm": 1400,
+    "CO2_percent": 5,
+    "O2_min_percent": 12,
+    "measurement_height_m": 1.83
+  },
+  "typical_values": {
+    "ambient_temp_C": 20,
+    "ambient_pressure_Pa": 101325,
+    "R_specific_air": 287.0,
+    "g": 9.81
+  },
+  "testing": {
+    "acceptance": {
+      "title": "Acceptance Testing (NFPA 92 Chapter 8)",
+      "items": [
+        "Design documents include acceptance testing procedures and pass/fail criteria",
+        "Preliminary building inspection completed (construction status, openings, barriers)",
+        "Component testing completed for fans, dampers, detectors, controls, doors",
+        "Individual component capacities and functions verified",
+        "Complete smoke-control sequence demonstrated (normal → automatic smoke mode → standby power if provided → return to normal)",
+        "Airflow quantities measured at exhaust and makeup-air locations",
+        "Pressure differences measured across smoke barriers / openings as applicable",
+        "Door-opening forces verified where pressurization is used",
+        "Activation from automatic detection and manual means confirmed",
+        "Firefighter’s Smoke Control Station (FSCS) override and status indication verified",
+        "Testing performed under both normal and emergency/standby power (if provided)",
+        "Special inspector (where required by IBC/local code) present and report prepared",
+        "Final acceptance test report filed with AHJ and copy retained in building"
+      ]
+    },
+    "periodic": {
+      "title": "Periodic Inspection, Testing & Maintenance (NFPA 92 8.6)",
+      "items": [
+        "Dedicated smoke control systems tested at least semiannually",
+        "Non-dedicated systems tested at least annually",
+        "Airflow quantities measured at exhaust equipment and makeup-air supplies",
+        "Pressure differences measured at smoke barrier openings",
+        "Full control sequence operated for each design scenario",
+        "Results documented in O&M log and available for inspection",
+        "Equipment maintained per manufacturer recommendations",
+        "Any modifications re-tested and documentation updated"
+      ]
+    },
+    "documentation": {
+      "title": "Required Documentation (NFPA 92 Chapter 7)",
+      "items": [
+        "Detailed Design Report prepared (purpose, objectives, approach, assumptions, calculations, equipment specs, activation method, operation logic, commissioning procedures)",
+        "Operations & Maintenance Manual provided to owner (commissioning results, ITM frequencies, critical design assumptions, system purpose)",
+        "As-built drawings and control sequences current",
+        "Acceptance test report retained on site"
+      ]
+    }
+  }
+}
